@@ -1,0 +1,39 @@
+
+# Code for Lesseon 3 Spark Exercises
+
+
+
+
+def split_show_views(line):
+...     line = line.strip()
+...     key_value = line.split(",")
+...     show = key_value[0]
+...     views = int(key_value[1])
+...     return(show, views)
+
+
+show_views = show_views_file.map(split_show_views)
+
+def split_show_channel(line):
+...     line = line.strip()
+...     key_value = line.split(",")
+...     show = key_value[0]
+...     channel = key_value[1]
+...     return(show, channel)
+
+show_channel = show_channel_file.map(split_show_channel)
+
+joined_dataset = show_channel.join(show_views)
+
+def extract_channel_views(show_views_channel):
+...     key_value = show_views_channel[1]
+...     channel = key_value[0]
+...     views = int(key_value[1])
+...     return(channel, views)
+
+
+def some_function(a , b)
+...	return a+b
+
+channel_views.reduceByKey(some_function).collect()
+
